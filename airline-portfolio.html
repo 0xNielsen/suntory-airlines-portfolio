@@ -1,0 +1,1156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suntory Global Spirits | Airline Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* ===========================================
+           SUNTORY BRAND COLORS & THEME
+           Based on Suntory Global Spirits Brand Guidelines
+           =========================================== */
+        :root {
+            /* Suntory Brand Colors */
+            --suntory-water-blue: #9BC2DC;
+            --pine: #003339;
+            --shore: #F7F2E6;
+            --fire: #E78829;
+            --earth: #7F3131;
+            --smoke: #E2E2E2;
+            --char: #262626;
+            
+            /* Semantic mappings */
+            --bg-primary: var(--shore);
+            --bg-secondary: #ffffff;
+            --text-primary: var(--char);
+            --text-secondary: #5a5a5a;
+            --accent: var(--pine);
+            --accent-highlight: var(--suntory-water-blue);
+            --accent-warm: var(--fire);
+            
+            /* Typography */
+            --font-display: 'Inter', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --font-japanese: 'Noto Sans JP', sans-serif;
+            
+            /* Spacing */
+            --slide-padding: clamp(3rem, 6vw, 5rem);
+            
+            /* Animation */
+            --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+            --duration-normal: 0.6s;
+        }
+
+        /* ===========================================
+           BASE STYLES
+           =========================================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-snap-type: y mandatory;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* ===========================================
+           PROGRESS BAR
+           =========================================== */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: var(--accent);
+            width: 0%;
+            z-index: 1000;
+            transition: width 0.3s ease;
+        }
+
+        /* ===========================================
+           NAVIGATION DOTS
+           =========================================== */
+        .nav-dots {
+            position: fixed;
+            right: 2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            z-index: 100;
+        }
+
+        .nav-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--smoke);
+            border: 1px solid var(--accent);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .nav-dot.active {
+            background: var(--accent);
+            transform: scale(1.3);
+        }
+
+        .nav-dot:hover {
+            background: var(--accent-highlight);
+        }
+
+        /* ===========================================
+           SLIDE CONTAINER
+           =========================================== */
+        .slide {
+            min-height: 100vh;
+            padding: var(--slide-padding);
+            scroll-snap-align: start;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* ===========================================
+           ANIMATIONS
+           =========================================== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity var(--duration-normal) var(--ease-out-expo),
+                        transform var(--duration-normal) var(--ease-out-expo);
+        }
+
+        .slide.visible .reveal {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal:nth-child(1) { transition-delay: 0.1s; }
+        .reveal:nth-child(2) { transition-delay: 0.2s; }
+        .reveal:nth-child(3) { transition-delay: 0.3s; }
+        .reveal:nth-child(4) { transition-delay: 0.4s; }
+        .reveal:nth-child(5) { transition-delay: 0.5s; }
+
+        @media (prefers-reduced-motion: reduce) {
+            .reveal {
+                transition: opacity 0.3s ease;
+                transform: none;
+            }
+        }
+
+        /* ===========================================
+           TITLE SLIDE
+           =========================================== */
+        .title-slide {
+            background: var(--bg-primary);
+            position: relative;
+        }
+
+        .title-slide .logo {
+            position: absolute;
+            top: var(--slide-padding);
+            left: var(--slide-padding);
+            height: 40px;
+            opacity: 0;
+            animation: fadeSlide 0.8s ease 0.3s forwards;
+        }
+
+        .title-slide .content {
+            max-width: 65%;
+        }
+
+        .logo-mark {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .logo-mark .line {
+            width: 40px;
+            height: 2px;
+            background: var(--accent);
+        }
+
+        .logo-mark span {
+            font-size: 0.75rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            font-weight: 500;
+            color: var(--accent);
+        }
+
+        .main-title {
+            font-size: clamp(2.8rem, 6vw, 5rem);
+            font-weight: 300;
+            line-height: 1.15;
+            letter-spacing: -0.03em;
+            margin-bottom: 2rem;
+        }
+
+        .main-title strong {
+            font-weight: 500;
+            color: var(--accent);
+        }
+
+        .subtitle {
+            font-size: 1.15rem;
+            font-weight: 300;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            max-width: 500px;
+        }
+
+        .accent-circle {
+            position: absolute;
+            bottom: 12%;
+            right: 12%;
+            width: 200px;
+            height: 200px;
+            border: 1px solid var(--accent-highlight);
+            border-radius: 50%;
+            opacity: 0.5;
+        }
+
+        .accent-circle::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 10px;
+            height: 10px;
+            background: var(--accent);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .vertical-text {
+            position: absolute;
+            right: 6rem;
+            top: 50%;
+            transform: translateY(-50%) rotate(90deg);
+            transform-origin: center;
+            font-family: var(--font-japanese);
+            font-size: 0.8rem;
+            letter-spacing: 0.5em;
+            color: var(--text-secondary);
+            opacity: 0.6;
+        }
+
+        .slide-footer {
+            position: absolute;
+            bottom: var(--slide-padding);
+            left: var(--slide-padding);
+            display: flex;
+            gap: 2.5rem;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        /* ===========================================
+           CATEGORY SLIDE
+           =========================================== */
+        .category-slide {
+            background: var(--bg-secondary);
+        }
+
+        .category-slide .section-label {
+            font-size: 0.7rem;
+            letter-spacing: 0.4em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+        }
+
+        .category-slide h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 400;
+            margin-bottom: 3rem;
+            color: var(--text-primary);
+        }
+
+        .category-slide h2 span {
+            color: var(--accent-highlight);
+        }
+
+        /* ===========================================
+           PRODUCT GRID
+           =========================================== */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+        }
+
+        .product-card {
+            background: var(--bg-primary);
+            padding: 2rem;
+            border-radius: 4px;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0, 51, 57, 0.1);
+        }
+
+        .product-card .product-image {
+            height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .product-card .product-image img {
+            max-height: 100%;
+            max-width: 100%;
+            object-fit: contain;
+        }
+
+        .product-card .product-name {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .product-card .product-size {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.75rem;
+        }
+
+        .product-card .product-blurb {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+
+        .product-card .product-price {
+            margin-top: auto;
+            display: flex;
+            align-items: baseline;
+            gap: 0.5rem;
+        }
+
+        .product-card .nap {
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: var(--accent);
+        }
+
+        .product-card .nap-label {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        /* ===========================================
+           PRICING TABLE SLIDE
+           =========================================== */
+        .pricing-slide {
+            background: var(--pine);
+            color: #ffffff;
+        }
+
+        .pricing-slide .section-label {
+            color: var(--accent-highlight);
+        }
+
+        .pricing-slide h2 {
+            color: #ffffff;
+        }
+
+        .pricing-table {
+            width: 100%;
+            max-width: 900px;
+            border-collapse: collapse;
+            margin-top: 2rem;
+        }
+
+        .pricing-table th,
+        .pricing-table td {
+            padding: 1rem 1.5rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(155, 194, 220, 0.2);
+        }
+
+        .pricing-table th {
+            font-size: 0.7rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--accent-highlight);
+            font-weight: 500;
+        }
+
+        .pricing-table td {
+            font-size: 1rem;
+        }
+
+        .pricing-table tr:hover td {
+            background: rgba(155, 194, 220, 0.05);
+        }
+
+        .pricing-table .price-cell {
+            font-weight: 500;
+            color: var(--fire);
+        }
+
+        /* ===========================================
+           OTR SLIDE
+           =========================================== */
+        .otr-slide {
+            background: linear-gradient(135deg, var(--shore) 0%, #ffffff 100%);
+        }
+
+        .otr-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.5rem;
+            max-width: 1000px;
+        }
+
+        .otr-card {
+            background: #ffffff;
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 51, 57, 0.08);
+            transition: transform 0.3s ease;
+        }
+
+        .otr-card:hover {
+            transform: translateY(-6px);
+        }
+
+        .otr-card .can-image {
+            height: 220px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .otr-card .can-image img {
+            max-height: 100%;
+            max-width: 100%;
+            object-fit: contain;
+        }
+
+        .otr-card .cocktail-name {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .otr-card .size-info {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .otr-card .can-blurb {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            line-height: 1.4;
+            margin-bottom: 1rem;
+            font-style: italic;
+            min-height: 2.8rem;
+        }
+
+        .otr-card .price-badge {
+            display: inline-block;
+            background: var(--pine);
+            color: #ffffff;
+            padding: 0.5rem 1.25rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* ===========================================
+           CONTACT SLIDE
+           =========================================== */
+        .contact-slide {
+            background: var(--pine);
+            color: #ffffff;
+            text-align: center;
+        }
+
+        .contact-slide h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 300;
+            margin-bottom: 2rem;
+        }
+
+        .contact-slide .tagline {
+            font-size: 1.1rem;
+            color: var(--accent-highlight);
+            margin-bottom: 3rem;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            margin-bottom: 3rem;
+        }
+
+        .contact-info .item {
+            text-align: center;
+        }
+
+        .contact-info .label {
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--accent-highlight);
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-info .value {
+            font-size: 1rem;
+        }
+
+        .disclaimer {
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.5);
+            margin-top: 4rem;
+        }
+
+        .contact-slide .logo-footer {
+            height: 40px;
+            width: auto;
+            max-width: 200px;
+            object-fit: contain;
+            opacity: 0.8;
+            margin-top: 2rem;
+        }
+
+        .contact-slide .contact-name {
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-slide .contact-title {
+            font-size: 1rem;
+            color: var(--accent-highlight);
+            margin-bottom: 2rem;
+        }
+
+        /* Brand logo in slide header */
+        .brand-logo {
+            height: 40px;
+            width: auto;
+            object-fit: contain;
+            margin-bottom: 1.5rem;
+        }
+
+        /* ===========================================
+           RESPONSIVE ADJUSTMENTS
+           =========================================== */
+        @media (max-width: 768px) {
+            :root {
+                --slide-padding: 1.5rem;
+            }
+
+            .nav-dots {
+                display: none;
+            }
+
+            .vertical-text {
+                display: none;
+            }
+
+            .accent-circle {
+                width: 100px;
+                height: 100px;
+                right: 5%;
+                bottom: 10%;
+            }
+
+            .title-slide .logo {
+                height: 30px;
+            }
+
+            .title-slide .content {
+                max-width: 100%;
+            }
+
+            .main-title {
+                font-size: 2.2rem;
+            }
+
+            .subtitle {
+                font-size: 1rem;
+            }
+
+            .brand-logo {
+                height: 30px;
+                margin-bottom: 1rem;
+            }
+
+            .category-slide h2 {
+                font-size: 1.6rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .product-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .product-card {
+                padding: 1.5rem;
+            }
+
+            .product-card .product-image {
+                height: 140px;
+            }
+
+            .product-card .product-blurb {
+                font-size: 0.8rem;
+            }
+
+            .otr-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .otr-card {
+                padding: 1.5rem;
+            }
+
+            .otr-card .can-image {
+                height: 180px;
+            }
+
+            .contact-slide h2 {
+                font-size: 1.8rem;
+            }
+
+            .contact-slide .contact-name {
+                font-size: 1.2rem;
+            }
+
+            .contact-slide .contact-title {
+                font-size: 0.9rem;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            .contact-slide .logo-footer {
+                height: 30px;
+            }
+
+            .pricing-slide h2 {
+                font-size: 1.6rem;
+            }
+
+            .pricing-table {
+                font-size: 0.85rem;
+            }
+
+            .pricing-table th,
+            .pricing-table td {
+                padding: 0.6rem 0.8rem;
+                font-size: 0.8rem;
+            }
+
+            .pricing-table th:nth-child(3),
+            .pricing-table td:nth-child(3) {
+                display: none; /* Hide category column on mobile */
+            }
+        }
+
+        @media (max-width: 480px) {
+            :root {
+                --slide-padding: 1rem;
+            }
+
+            .main-title {
+                font-size: 1.8rem;
+            }
+
+            .category-slide h2 {
+                font-size: 1.4rem;
+            }
+
+            .product-card .product-image {
+                height: 120px;
+            }
+
+            .otr-card .can-image {
+                height: 150px;
+            }
+
+            .pricing-table th,
+            .pricing-table td {
+                padding: 0.5rem;
+                font-size: 0.75rem;
+            }
+        }
+
+        /* Animation helper */
+        @keyframes fadeSlide {
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Progress Bar -->
+    <div class="progress-bar"></div>
+
+    <!-- Navigation Dots -->
+    <nav class="nav-dots" aria-label="Slide navigation"></nav>
+
+    <!-- SLIDE 1: Title -->
+    <section class="slide title-slide">
+        <img src="assets/Suntory_Global_Spirits-Logo.png" alt="Suntory Global Spirits" class="logo reveal">
+        
+        <div class="content">
+            <div class="logo-mark reveal">
+                <div class="line"></div>
+                <span>Transit Channel</span>
+            </div>
+            
+            <h1 class="main-title reveal">Airline<br><strong>Portfolio</strong></h1>
+            <p class="subtitle reveal">Iconic American spirits and premium ready-to-drink cocktails, backed by generations of craftsmanship and heritage.</p>
+        </div>
+
+        <div class="vertical-text">Suntory Global Spirits</div>
+        <div class="accent-circle"></div>
+
+        <div class="slide-footer reveal">
+            <span>March 2026</span>
+            <span>NAP Pricing</span>
+        </div>
+    </section>
+
+    <!-- SLIDE 2: Bourbon Collection -->
+    <section class="slide category-slide">
+        <img src="assets/JimBeam_Logo.png" alt="Jim Beam" class="brand-logo reveal">
+        <div class="section-label reveal">Miniatures • 50ml</div>
+        <h2 class="reveal">Bourbon <span>Collection</span></h2>
+        
+        <div class="product-grid">
+            <div class="product-card reveal">
+                <div class="product-image">
+                    <img src="assets/JimBeamWhite50ml.png" alt="Jim Beam White">
+                </div>
+                <div class="product-name">Jim Beam White</div>
+                <div class="product-size">50ml • Bourbon</div>
+                <div class="product-blurb">The world's #1 bourbon, crafted by seven generations of the Beam family since 1795. Exported to over 200 countries.</div>
+                <div class="product-price">
+                    <span class="nap">$0.50</span>
+                    <span class="nap-label">NAP</span>
+                </div>
+            </div>
+
+            <div class="product-card reveal">
+                <div class="product-image">
+                    <img src="assets/JimBeamBlack590ml.png" alt="Jim Beam Black">
+                </div>
+                <div class="product-name">Jim Beam Black</div>
+                <div class="product-size">50ml • Bourbon</div>
+                <div class="product-blurb">Extra-aged with a 7-year age statement at 90 proof. Rich caramel, warm oak, and smooth vanilla notes.</div>
+                <div class="product-price">
+                    <span class="nap">$0.80</span>
+                    <span class="nap-label">NAP</span>
+                </div>
+            </div>
+
+            <div class="product-card reveal">
+                <div class="product-image">
+                    <img src="assets/MakersMark50ml.png" alt="Maker's Mark">
+                </div>
+                <div class="product-name">Maker's Mark</div>
+                <div class="product-size">50ml • Bourbon</div>
+                <div class="product-blurb">America's first handcrafted wheated bourbon. Soft red winter wheat creates a smoother, never-bitter taste. National Historic Landmark.</div>
+                <div class="product-price">
+                    <span class="nap">$1.50</span>
+                    <span class="nap-label">NAP</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE 3: Tequila -->
+    <section class="slide category-slide">
+        <div class="section-label reveal">Miniatures • 50ml</div>
+        <h2 class="reveal">Tequila <span>Collection</span></h2>
+        
+        <div class="product-grid" style="max-width: 700px;">
+            <div class="product-card reveal">
+                <div class="product-image">
+                    <img src="assets/Sauza.Blue.50ml.png" alt="Sauza Gold">
+                </div>
+                <div class="product-name">Sauza Gold</div>
+                <div class="product-size">50ml • Tequila Mixto</div>
+                <div class="product-blurb">Pioneering tequila heritage since 1873. Double-distilled with notes of sweet agave, caramel, and subtle oak. Perfect for mixing.</div>
+                <div class="product-price">
+                    <span class="nap">$0.50</span>
+                    <span class="nap-label">NAP</span>
+                </div>
+            </div>
+
+            <div class="product-card reveal">
+                <div class="product-image">
+                    <img src="assets/Sauza.Blue.50ml.png" alt="Sauza Silver">
+                </div>
+                <div class="product-name">Sauza Silver</div>
+                <div class="product-size">50ml • 100% Blue Agave</div>
+                <div class="product-blurb">100% blue agave tequila, double-distilled in copper pot stills. Fresh, crisp agave flavor with notes of green apple and honeysuckle.</div>
+                <div class="product-price">
+                    <span class="nap">$0.50</span>
+                    <span class="nap-label">NAP</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE 4: On The Rocks Premium RTD Cocktails -->
+    <section class="slide category-slide">
+        <img src="assets/OTR.Logo.png" alt="On The Rocks" class="brand-logo reveal">
+        <div class="section-label reveal">On The Rocks • 100ml Bottles</div>
+        <h2 class="reveal">On The Rocks <span>Premium RTD Cocktails</span></h2>
+
+        <div class="product-grid">
+            <div class="product-card reveal">
+                <div class="product-image">
+                    <img src="assets/OTR.OF.100.png" alt="On The Rocks Old Fashioned">
+                </div>
+                <div class="product-name">The Old Fashioned</div>
+                <div class="product-size">100ml • Made with Knob Creek Bourbon</div>
+                <div class="product-blurb">Bar-quality cocktail crafted with premium Knob Creek bourbon and all-natural ingredients.</div>
+                <div class="product-price">
+                    <span class="nap">$1.80</span>
+                    <span class="nap-label">NAP</span>
+                </div>
+            </div>
+
+            <div class="product-card reveal">
+                <div class="product-image">
+                    <img src="assets/OTR.Marg.100.png" alt="On The Rocks Margarita">
+                </div>
+                <div class="product-name">The Margarita</div>
+                <div class="product-size">100ml • Made with Hornitos Tequila</div>
+                <div class="product-blurb">Craft margarita made with Hornitos tequila, real lime juice, and premium triple sec.</div>
+                <div class="product-price">
+                    <span class="nap">$1.80</span>
+                    <span class="nap-label">NAP</span>
+                </div>
+            </div>
+
+            <div class="product-card reveal">
+                <div class="product-image">
+                    <img src="assets/OTR.Cosmo.100ml.png" alt="On The Rocks Cosmopolitan">
+                </div>
+                <div class="product-name">The Cosmopolitan</div>
+                <div class="product-size">100ml • Made with Effen Vodka</div>
+                <div class="product-blurb">Classic cosmopolitan crafted with Effen vodka, cranberry, and citrus.</div>
+                <div class="product-price">
+                    <span class="nap">$1.80</span>
+                    <span class="nap-label">NAP</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE 5: On The Rocks Cans NEW -->
+    <section class="slide otr-slide">
+        <img src="assets/OTR.Logo.png" alt="On The Rocks" class="brand-logo reveal">
+        <div class="section-label reveal" style="color: var(--accent);">New for 2026 • 355ml Cans</div>
+        <h2 class="reveal" style="font-size: clamp(2rem, 4vw, 3rem); font-weight: 400; margin-bottom: 3rem;">On The Rocks <span style="color: var(--accent-warm);">Canned Cocktails</span></h2>
+        
+        <div class="otr-grid reveal">
+            <div class="otr-card">
+                <div class="can-image">
+                    <img src="assets/OTR.MangoMintMojito.png" alt="Mango Mint Mojito">
+                </div>
+                <div class="cocktail-name">Mango Mint Mojito</div>
+                <div class="size-info">355ml Can</div>
+                <div class="can-blurb">Tropical mango with fresh mint and premium rum.</div>
+                <div class="price-badge">$1.70 NAP</div>
+            </div>
+
+            <div class="otr-card">
+                <div class="can-image">
+                    <img src="assets/OTR.CucLemMule.355ml.png" alt="Cucumber Lemongrass Mule">
+                </div>
+                <div class="cocktail-name">Cucumber Lemongrass Mule</div>
+                <div class="size-info">355ml Can</div>
+                <div class="can-blurb">Refreshing cucumber and lemongrass with ginger kick.</div>
+                <div class="price-badge">$1.70 NAP</div>
+            </div>
+
+            <div class="otr-card">
+                <div class="can-image">
+                    <img src="assets/OTR.SparklingMargarita.355ml.png" alt="Sparkling Lime Margarita">
+                </div>
+                <div class="cocktail-name">Sparkling Lime Margarita</div>
+                <div class="size-info">355ml Can</div>
+                <div class="can-blurb">Classic lime margarita with a sparkling twist.</div>
+                <div class="price-badge">$1.70 NAP</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE 6: -196 Japanese RTD -->
+    <section class="slide category-slide">
+        <img src="assets/196_logo.png" alt="-196" class="brand-logo reveal">
+        <div class="section-label reveal">Japanese Innovation • 355ml Can</div>
+        <h2 class="reveal">-196 <span>Japanese Vodka Seltzer</span></h2>
+
+        <div class="product-grid" style="max-width: 400px;">
+            <div class="product-card reveal">
+                <div class="product-image" style="height: 220px;">
+                    <img src="assets/196lemon.png" alt="-196 Lemon">
+                </div>
+                <div class="product-name">-196 Lemon</div>
+                <div class="product-size">355ml • Japanese Vodka Seltzer</div>
+                <div class="product-blurb">Japan's best-selling canned RTD since 2005. Made with Suntory's proprietary Freeze Crush Infusion—whole fruit flash-frozen at -196°C for bold, authentic flavor.</div>
+                <div class="product-price">
+                    <span class="nap">$1.25</span>
+                    <span class="nap-label">NAP</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE 7: Full Pricing Summary -->
+    <section class="slide pricing-slide">
+        <div class="section-label reveal">Complete Portfolio</div>
+        <h2 class="reveal">NAP Pricing Summary</h2>
+        
+        <table class="pricing-table reveal">
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Size</th>
+                    <th>Category</th>
+                    <th>NAP</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Jim Beam White</td>
+                    <td>50ml</td>
+                    <td>Bourbon</td>
+                    <td class="price-cell">$0.50</td>
+                </tr>
+                <tr>
+                    <td>Jim Beam Black</td>
+                    <td>50ml</td>
+                    <td>Bourbon</td>
+                    <td class="price-cell">$0.80</td>
+                </tr>
+                <tr>
+                    <td>Maker's Mark</td>
+                    <td>50ml</td>
+                    <td>Bourbon</td>
+                    <td class="price-cell">$1.50</td>
+                </tr>
+                <tr>
+                    <td>Sauza Gold</td>
+                    <td>50ml</td>
+                    <td>Tequila</td>
+                    <td class="price-cell">$0.50</td>
+                </tr>
+                <tr>
+                    <td>Sauza Silver</td>
+                    <td>50ml</td>
+                    <td>Tequila</td>
+                    <td class="price-cell">$0.50</td>
+                </tr>
+                <tr>
+                    <td>On The Rocks Old Fashioned</td>
+                    <td>100ml</td>
+                    <td>RTD</td>
+                    <td class="price-cell">$1.80</td>
+                </tr>
+                <tr>
+                    <td>On The Rocks Margarita</td>
+                    <td>100ml</td>
+                    <td>RTD</td>
+                    <td class="price-cell">$1.80</td>
+                </tr>
+                <tr>
+                    <td>On The Rocks Cosmopolitan</td>
+                    <td>100ml</td>
+                    <td>RTD</td>
+                    <td class="price-cell">$1.80</td>
+                </tr>
+                <tr>
+                    <td>On The Rocks Canned Cocktails (3 flavors)</td>
+                    <td>355ml</td>
+                    <td>RTD Can</td>
+                    <td class="price-cell">$1.70</td>
+                </tr>
+                <tr>
+                    <td>-196 Japanese Vodka Seltzer</td>
+                    <td>355ml</td>
+                    <td>RTD Can</td>
+                    <td class="price-cell">$1.25</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- SLIDE 8: Contact -->
+    <section class="slide contact-slide">
+        <h2 class="reveal">Let's Connect</h2>
+
+        <div class="reveal">
+            <p class="contact-name">Sean Nielsen</p>
+            <p class="contact-title">National Account Manager, Airlines</p>
+        </div>
+
+        <div class="contact-info reveal">
+            <div class="item">
+                <div class="label">Channel</div>
+                <div class="value">Strategic Accounts – On Premise</div>
+            </div>
+            <div class="item">
+                <div class="label">Territory</div>
+                <div class="value">Airlines & Transit</div>
+            </div>
+        </div>
+
+        <img src="assets/Suntory_Global_Spirits-Logo.png" alt="Suntory Global Spirits" class="logo-footer reveal">
+
+        <p class="disclaimer reveal">March 2026 | Prices subject to state/market variations</p>
+    </section>
+
+    <script>
+        /* ===========================================
+           SLIDE PRESENTATION CONTROLLER
+           Handles navigation, animations, and progress
+           =========================================== */
+        class SlidePresentation {
+            constructor() {
+                this.slides = document.querySelectorAll('.slide');
+                this.navDots = document.querySelector('.nav-dots');
+                this.progressBar = document.querySelector('.progress-bar');
+                this.currentSlide = 0;
+
+                this.init();
+            }
+
+            init() {
+                this.createNavDots();
+                this.setupIntersectionObserver();
+                this.setupKeyboardNav();
+                this.updateProgress();
+            }
+
+            createNavDots() {
+                this.slides.forEach((_, index) => {
+                    const dot = document.createElement('button');
+                    dot.classList.add('nav-dot');
+                    dot.setAttribute('aria-label', `Go to slide ${index + 1}`);
+                    dot.addEventListener('click', () => this.goToSlide(index));
+                    this.navDots.appendChild(dot);
+                });
+                this.updateNavDots();
+            }
+
+            setupIntersectionObserver() {
+                const options = {
+                    root: null,
+                    rootMargin: '0px',
+                    threshold: 0.5
+                };
+
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                            this.currentSlide = Array.from(this.slides).indexOf(entry.target);
+                            this.updateNavDots();
+                            this.updateProgress();
+                        }
+                    });
+                }, options);
+
+                this.slides.forEach(slide => observer.observe(slide));
+            }
+
+            setupKeyboardNav() {
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'ArrowDown' || e.key === 'ArrowRight' || e.key === ' ') {
+                        e.preventDefault();
+                        this.nextSlide();
+                    } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+                        e.preventDefault();
+                        this.prevSlide();
+                    }
+                });
+            }
+
+            goToSlide(index) {
+                this.slides[index].scrollIntoView({ behavior: 'smooth' });
+            }
+
+            nextSlide() {
+                if (this.currentSlide < this.slides.length - 1) {
+                    this.goToSlide(this.currentSlide + 1);
+                }
+            }
+
+            prevSlide() {
+                if (this.currentSlide > 0) {
+                    this.goToSlide(this.currentSlide - 1);
+                }
+            }
+
+            updateNavDots() {
+                const dots = this.navDots.querySelectorAll('.nav-dot');
+                dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === this.currentSlide);
+                });
+            }
+
+            updateProgress() {
+                const progress = ((this.currentSlide + 1) / this.slides.length) * 100;
+                this.progressBar.style.width = `${progress}%`;
+            }
+        }
+
+        // Initialize on DOM ready
+        document.addEventListener('DOMContentLoaded', () => {
+            new SlidePresentation();
+        });
+    </script>
+</body>
+</html>
