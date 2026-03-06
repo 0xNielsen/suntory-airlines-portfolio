@@ -605,6 +605,11 @@
             margin-bottom: 0;
         }
 
+        /* Mobile-only line breaks (hidden on desktop) */
+        .mobile-break {
+            display: none;
+        }
+
         /* ===========================================
            RESPONSIVE ADJUSTMENTS
            =========================================== */
@@ -683,8 +688,8 @@
             }
 
             .product-card .product-image {
-                width: 100px;
-                height: 120px;
+                width: 120px;
+                height: 150px;
                 flex-shrink: 0;
                 margin-bottom: 0;
             }
@@ -743,15 +748,21 @@
             }
 
             .otr-card {
+                display: flex;
                 flex-direction: row;
                 text-align: left;
                 padding: 1rem;
                 gap: 1rem;
             }
 
+            /* Mobile line breaks for slide titles */
+            .mobile-break {
+                display: block;
+            }
+
             .otr-card .can-image {
-                width: 80px;
-                height: 120px;
+                width: 100px;
+                height: 150px;
                 flex-shrink: 0;
                 margin-bottom: 0;
             }
@@ -871,7 +882,7 @@
             }
 
             .product-card .product-image {
-                height: 110px;
+                height: 140px;
             }
 
             .product-card .product-blurb {
@@ -888,7 +899,7 @@
             }
 
             .otr-card .can-image {
-                height: 140px;
+                height: 150px;
             }
 
             .pricing-table th,
@@ -1149,7 +1160,7 @@
     <!-- SLIDE 4: On The Rocks Premium RTD Cocktails -->
     <section class="slide category-slide">
         <div class="section-label reveal">On The Rocks • 100ml Bottles</div>
-        <h2 class="reveal">On The Rocks <span>Premium RTD Cocktails</span></h2>
+        <h2 class="reveal">On The Rocks<br class="mobile-break"> <span>Premium RTD Cocktails</span></h2>
 
         <div class="product-grid">
             <div class="product-card reveal">
@@ -1212,7 +1223,7 @@
     <!-- SLIDE 5: On The Rocks Cans NEW -->
     <section class="slide otr-slide">
         <div class="section-label reveal" style="color: var(--accent);">New for 2026 • 355ml Cans</div>
-        <h2 class="reveal" style="font-size: clamp(2rem, 4vw, 3rem); font-weight: 400; margin-bottom: 3rem;">On The Rocks <span style="color: var(--accent-warm);">Canned Cocktails</span></h2>
+        <h2 class="reveal" style="font-size: clamp(2rem, 4vw, 3rem); font-weight: 400; margin-bottom: 3rem;">On The Rocks<br class="mobile-break"> <span style="color: var(--accent-warm);">Canned Cocktails</span></h2>
         
         <div class="otr-grid reveal">
             <div class="otr-card">
@@ -1266,7 +1277,7 @@
     <!-- SLIDE 6: -196 Japanese RTD -->
     <section class="slide category-slide">
         <div class="section-label reveal">Japanese Innovation • 355ml Can</div>
-        <h2 class="reveal">-196 <span>Japanese Vodka Seltzer</span></h2>
+        <h2 class="reveal">-196<br class="mobile-break"> <span>Japanese Vodka Seltzer</span></h2>
 
         <div class="product-grid" style="max-width: 400px;">
             <div class="product-card reveal">
