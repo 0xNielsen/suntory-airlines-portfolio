@@ -669,37 +669,41 @@
                 font-size: 0.6rem !important;
             }
 
-            .product-header .card-logo {
-                height: 26px;
-                max-width: 85px;
-            }
-
-            .otr-header .card-logo {
-                height: 22px;
-                max-width: 70px;
-            }
-
-            .product-header,
-            .otr-header {
-                gap: 0.5rem;
-            }
-
             .category-slide h2 {
                 font-size: 1.5rem;
                 margin-bottom: 1.25rem;
             }
 
-            .product-grid {
-                grid-template-columns: 1fr;
-                gap: 1.25rem;
-            }
-
+            /* Horizontal card layout for mobile */
             .product-card {
-                padding: 1.25rem;
+                flex-direction: row;
+                align-items: center;
+                padding: 1rem;
+                gap: 1rem;
             }
 
             .product-card .product-image {
-                height: 130px;
+                width: 100px;
+                height: 120px;
+                flex-shrink: 0;
+                margin-bottom: 0;
+            }
+
+            .product-card .product-details {
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+            }
+
+            .product-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.25rem;
+            }
+
+            .product-header .card-logo {
+                height: 24px;
+                max-width: 80px;
             }
 
             .product-card .product-name {
@@ -707,43 +711,84 @@
             }
 
             .product-card .product-size {
-                font-size: 0.75rem;
+                font-size: 0.7rem;
             }
 
             .product-card .product-blurb {
-                font-size: 0.75rem;
+                font-size: 0.7rem;
                 line-height: 1.4;
+                display: -webkit-box;
+                -webkit-line-clamp: 2;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+            }
+
+            .product-card .product-price {
+                margin-top: 0.5rem;
             }
 
             .product-card .nap {
-                font-size: 1.25rem;
+                font-size: 1.2rem;
             }
 
+            .product-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            /* OTR cards - also horizontal */
             .otr-grid {
                 grid-template-columns: 1fr;
-                gap: 1.25rem;
+                gap: 1rem;
             }
 
             .otr-card {
-                padding: 1.25rem;
+                flex-direction: row;
+                text-align: left;
+                padding: 1rem;
+                gap: 1rem;
             }
 
             .otr-card .can-image {
-                height: 160px;
+                width: 80px;
+                height: 120px;
+                flex-shrink: 0;
+                margin-bottom: 0;
+            }
+
+            .otr-card .otr-details {
+                flex: 1;
+            }
+
+            .otr-header {
+                justify-content: flex-start;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.25rem;
+            }
+
+            .otr-header .card-logo {
+                height: 20px;
+                max-width: 70px;
             }
 
             .otr-card .cocktail-name {
-                font-size: 1rem;
+                font-size: 0.95rem;
+            }
+
+            .otr-card .size-info {
+                font-size: 0.7rem;
             }
 
             .otr-card .can-blurb {
-                font-size: 0.75rem;
+                font-size: 0.7rem;
                 min-height: auto;
             }
 
             .otr-card .price-badge {
-                font-size: 0.8rem;
-                padding: 0.4rem 1rem;
+                font-size: 0.75rem;
+                padding: 0.35rem 0.8rem;
+                margin-top: 0.5rem;
             }
 
             .contact-slide h2 {
@@ -1003,15 +1048,17 @@
                 <div class="product-image">
                     <img src="assets/JimBeamWhite50ml.png" alt="Jim Beam White">
                 </div>
-                <div class="product-header">
-                    <img src="assets/JimBeam_Logo.png" alt="Jim Beam" class="card-logo">
-                    <div class="product-name">Jim Beam White</div>
-                </div>
-                <div class="product-size">50ml • Bourbon</div>
-                <div class="product-blurb">The world's #1 bourbon, crafted by seven generations of the Beam family since 1795. Exported to over 200 countries.</div>
-                <div class="product-price">
-                    <span class="nap">$0.50</span>
-                    <span class="nap-label">NAP</span>
+                <div class="product-details">
+                    <div class="product-header">
+                        <img src="assets/JimBeam_Logo.png" alt="Jim Beam" class="card-logo">
+                        <div class="product-name">Jim Beam White</div>
+                    </div>
+                    <div class="product-size">50ml • Bourbon</div>
+                    <div class="product-blurb">The world's #1 bourbon, crafted by seven generations of the Beam family since 1795. Exported to over 200 countries.</div>
+                    <div class="product-price">
+                        <span class="nap">$0.50</span>
+                        <span class="nap-label">NAP</span>
+                    </div>
                 </div>
             </div>
 
@@ -1019,15 +1066,17 @@
                 <div class="product-image">
                     <img src="assets/JimBeamBlack590ml.png" alt="Jim Beam Black">
                 </div>
-                <div class="product-header">
-                    <img src="assets/JimBeam_Logo.png" alt="Jim Beam" class="card-logo">
-                    <div class="product-name">Jim Beam Black</div>
-                </div>
-                <div class="product-size">50ml • Bourbon</div>
-                <div class="product-blurb">Extra-aged with a 7-year age statement at 90 proof. Rich caramel, warm oak, and smooth vanilla notes.</div>
-                <div class="product-price">
-                    <span class="nap">$0.80</span>
-                    <span class="nap-label">NAP</span>
+                <div class="product-details">
+                    <div class="product-header">
+                        <img src="assets/JimBeam_Logo.png" alt="Jim Beam" class="card-logo">
+                        <div class="product-name">Jim Beam Black</div>
+                    </div>
+                    <div class="product-size">50ml • Bourbon</div>
+                    <div class="product-blurb">Extra-aged with a 7-year age statement at 90 proof. Rich caramel, warm oak, and smooth vanilla notes.</div>
+                    <div class="product-price">
+                        <span class="nap">$0.80</span>
+                        <span class="nap-label">NAP</span>
+                    </div>
                 </div>
             </div>
 
@@ -1035,15 +1084,17 @@
                 <div class="product-image">
                     <img src="assets/MakersMark50ml.png" alt="Maker's Mark">
                 </div>
-                <div class="product-header">
-                    <img src="assets/Makers.Mark.png" alt="Maker's Mark" class="card-logo">
-                    <div class="product-name">Maker's Mark</div>
-                </div>
-                <div class="product-size">50ml • Bourbon</div>
-                <div class="product-blurb">America's first handcrafted wheated bourbon. Soft red winter wheat creates a smoother, never-bitter taste. National Historic Landmark.</div>
-                <div class="product-price">
-                    <span class="nap">$1.50</span>
-                    <span class="nap-label">NAP</span>
+                <div class="product-details">
+                    <div class="product-header">
+                        <img src="assets/MakersMark_Logo.png" alt="Maker's Mark" class="card-logo">
+                        <div class="product-name">Maker's Mark</div>
+                    </div>
+                    <div class="product-size">50ml • Bourbon</div>
+                    <div class="product-blurb">America's first handcrafted wheated bourbon. Soft red winter wheat creates a smoother, never-bitter taste. National Historic Landmark.</div>
+                    <div class="product-price">
+                        <span class="nap">$1.50</span>
+                        <span class="nap-label">NAP</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1060,15 +1111,17 @@
                 <div class="product-image">
                     <img src="assets/Sauza.Gold.50ml.png" alt="Sauza Gold">
                 </div>
-                <div class="product-header">
-                    <img src="assets/Sauza_Logo.png" alt="Sauza" class="card-logo">
-                    <div class="product-name">Sauza Gold</div>
-                </div>
-                <div class="product-size">50ml • Tequila Mixto</div>
-                <div class="product-blurb">Pioneering tequila heritage since 1873. Double-distilled with notes of sweet agave, caramel, and subtle oak. Perfect for mixing.</div>
-                <div class="product-price">
-                    <span class="nap">$0.50</span>
-                    <span class="nap-label">NAP</span>
+                <div class="product-details">
+                    <div class="product-header">
+                        <img src="assets/Sauza_Logo.png" alt="Sauza" class="card-logo">
+                        <div class="product-name">Sauza Gold</div>
+                    </div>
+                    <div class="product-size">50ml • Tequila Mixto</div>
+                    <div class="product-blurb">Pioneering tequila heritage since 1873. Double-distilled with notes of sweet agave, caramel, and subtle oak. Perfect for mixing.</div>
+                    <div class="product-price">
+                        <span class="nap">$0.50</span>
+                        <span class="nap-label">NAP</span>
+                    </div>
                 </div>
             </div>
 
@@ -1076,15 +1129,17 @@
                 <div class="product-image">
                     <img src="assets/Sauza.Blue.50ml.png" alt="Sauza Silver">
                 </div>
-                <div class="product-header">
-                    <img src="assets/Sauza_Logo.png" alt="Sauza" class="card-logo">
-                    <div class="product-name">Sauza Silver</div>
-                </div>
-                <div class="product-size">50ml • 100% Blue Agave</div>
-                <div class="product-blurb">100% blue agave tequila, double-distilled in copper pot stills. Fresh, crisp agave flavor with notes of green apple and honeysuckle.</div>
-                <div class="product-price">
-                    <span class="nap">$0.50</span>
-                    <span class="nap-label">NAP</span>
+                <div class="product-details">
+                    <div class="product-header">
+                        <img src="assets/Sauza_Logo.png" alt="Sauza" class="card-logo">
+                        <div class="product-name">Sauza Silver</div>
+                    </div>
+                    <div class="product-size">50ml • 100% Blue Agave</div>
+                    <div class="product-blurb">100% blue agave tequila, double-distilled in copper pot stills. Fresh, crisp agave flavor with notes of green apple and honeysuckle.</div>
+                    <div class="product-price">
+                        <span class="nap">$0.50</span>
+                        <span class="nap-label">NAP</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1101,15 +1156,17 @@
                 <div class="product-image">
                     <img src="assets/OTR.OF.100.png" alt="On The Rocks Old Fashioned">
                 </div>
-                <div class="product-header">
-                    <img src="assets/OTR.Logo.png" alt="On The Rocks" class="card-logo">
-                    <div class="product-name">The Old Fashioned</div>
-                </div>
-                <div class="product-size">100ml • Made with Knob Creek Bourbon</div>
-                <div class="product-blurb">Bar-quality cocktail crafted with premium Knob Creek bourbon and all-natural ingredients.</div>
-                <div class="product-price">
-                    <span class="nap">$1.80</span>
-                    <span class="nap-label">NAP</span>
+                <div class="product-details">
+                    <div class="product-header">
+                        <img src="assets/OTR.Logo.png" alt="On The Rocks" class="card-logo">
+                        <div class="product-name">The Old Fashioned</div>
+                    </div>
+                    <div class="product-size">100ml • Made with Knob Creek Bourbon</div>
+                    <div class="product-blurb">Bar-quality cocktail crafted with premium Knob Creek bourbon and all-natural ingredients.</div>
+                    <div class="product-price">
+                        <span class="nap">$1.80</span>
+                        <span class="nap-label">NAP</span>
+                    </div>
                 </div>
             </div>
 
@@ -1117,15 +1174,17 @@
                 <div class="product-image">
                     <img src="assets/OTR.Marg.100.png" alt="On The Rocks Margarita">
                 </div>
-                <div class="product-header">
-                    <img src="assets/OTR.Logo.png" alt="On The Rocks" class="card-logo">
-                    <div class="product-name">The Margarita</div>
-                </div>
-                <div class="product-size">100ml • Made with Hornitos Tequila</div>
-                <div class="product-blurb">Craft margarita made with Hornitos tequila, real lime juice, and premium triple sec.</div>
-                <div class="product-price">
-                    <span class="nap">$1.80</span>
-                    <span class="nap-label">NAP</span>
+                <div class="product-details">
+                    <div class="product-header">
+                        <img src="assets/OTR.Logo.png" alt="On The Rocks" class="card-logo">
+                        <div class="product-name">The Margarita</div>
+                    </div>
+                    <div class="product-size">100ml • Made with Hornitos Tequila</div>
+                    <div class="product-blurb">Craft margarita made with Hornitos tequila, real lime juice, and premium triple sec.</div>
+                    <div class="product-price">
+                        <span class="nap">$1.80</span>
+                        <span class="nap-label">NAP</span>
+                    </div>
                 </div>
             </div>
 
@@ -1133,15 +1192,17 @@
                 <div class="product-image">
                     <img src="assets/OTR.Cosmo.100ml.png" alt="On The Rocks Cosmopolitan">
                 </div>
-                <div class="product-header">
-                    <img src="assets/OTR.Logo.png" alt="On The Rocks" class="card-logo">
-                    <div class="product-name">The Cosmopolitan</div>
-                </div>
-                <div class="product-size">100ml • Made with Effen Vodka</div>
-                <div class="product-blurb">Classic cosmopolitan crafted with Effen vodka, cranberry, and citrus.</div>
-                <div class="product-price">
-                    <span class="nap">$1.80</span>
-                    <span class="nap-label">NAP</span>
+                <div class="product-details">
+                    <div class="product-header">
+                        <img src="assets/OTR.Logo.png" alt="On The Rocks" class="card-logo">
+                        <div class="product-name">The Cosmopolitan</div>
+                    </div>
+                    <div class="product-size">100ml • Made with Effen Vodka</div>
+                    <div class="product-blurb">Classic cosmopolitan crafted with Effen vodka, cranberry, and citrus.</div>
+                    <div class="product-price">
+                        <span class="nap">$1.80</span>
+                        <span class="nap-label">NAP</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1158,39 +1219,45 @@
                 <div class="can-image">
                     <img src="assets/OTR.MangoMintMojito.png" alt="Mango Mint Mojito">
                 </div>
-                <div class="otr-header">
-                    <img src="assets/OTR.Logo.png" alt="On The Rocks" class="card-logo">
-                    <div class="cocktail-name">Mango Mint Mojito</div>
+                <div class="otr-details">
+                    <div class="otr-header">
+                        <img src="assets/OTR.Logo.png" alt="On The Rocks" class="card-logo">
+                        <div class="cocktail-name">Mango Mint Mojito</div>
+                    </div>
+                    <div class="size-info">355ml Can</div>
+                    <div class="can-blurb">Tropical mango with fresh mint and premium rum.</div>
+                    <div class="price-badge">$1.70 NAP</div>
                 </div>
-                <div class="size-info">355ml Can</div>
-                <div class="can-blurb">Tropical mango with fresh mint and premium rum.</div>
-                <div class="price-badge">$1.70 NAP</div>
             </div>
 
             <div class="otr-card">
                 <div class="can-image">
                     <img src="assets/OTR.CucLemMule.355ml.png" alt="Cucumber Lemongrass Mule">
                 </div>
-                <div class="otr-header">
-                    <img src="assets/OTR.Logo.png" alt="On The Rocks" class="card-logo">
-                    <div class="cocktail-name">Cucumber Lemongrass Mule</div>
+                <div class="otr-details">
+                    <div class="otr-header">
+                        <img src="assets/OTR.Logo.png" alt="On The Rocks" class="card-logo">
+                        <div class="cocktail-name">Cucumber Lemongrass Mule</div>
+                    </div>
+                    <div class="size-info">355ml Can</div>
+                    <div class="can-blurb">Refreshing cucumber and lemongrass with ginger kick.</div>
+                    <div class="price-badge">$1.70 NAP</div>
                 </div>
-                <div class="size-info">355ml Can</div>
-                <div class="can-blurb">Refreshing cucumber and lemongrass with ginger kick.</div>
-                <div class="price-badge">$1.70 NAP</div>
             </div>
 
             <div class="otr-card">
                 <div class="can-image">
                     <img src="assets/OTR.SparklingMargarita.355ml.png" alt="Sparkling Lime Margarita">
                 </div>
-                <div class="otr-header">
-                    <img src="assets/OTR.Logo.png" alt="On The Rocks" class="card-logo">
-                    <div class="cocktail-name">Sparkling Lime Margarita</div>
+                <div class="otr-details">
+                    <div class="otr-header">
+                        <img src="assets/OTR.Logo.png" alt="On The Rocks" class="card-logo">
+                        <div class="cocktail-name">Sparkling Lime Margarita</div>
+                    </div>
+                    <div class="size-info">355ml Can</div>
+                    <div class="can-blurb">Classic lime margarita with a sparkling twist.</div>
+                    <div class="price-badge">$1.70 NAP</div>
                 </div>
-                <div class="size-info">355ml Can</div>
-                <div class="can-blurb">Classic lime margarita with a sparkling twist.</div>
-                <div class="price-badge">$1.70 NAP</div>
             </div>
         </div>
         <p class="slide-disclaimer">Pricing varies by market. Contact your local distributor for accurate regional pricing.</p>
@@ -1206,15 +1273,17 @@
                 <div class="product-image" style="height: 220px;">
                     <img src="assets/196lemon.png" alt="-196 Lemon">
                 </div>
-                <div class="product-header">
-                    <img src="assets/196_logo.png" alt="-196" class="card-logo">
-                    <div class="product-name">-196 Lemon</div>
-                </div>
-                <div class="product-size">355ml • Japanese Vodka Seltzer</div>
-                <div class="product-blurb">Japan's best-selling canned RTD since 2005. Made with Suntory's proprietary Freeze Crush Infusion—whole fruit flash-frozen at -196°C for bold, authentic flavor.</div>
-                <div class="product-price">
-                    <span class="nap">$1.25</span>
-                    <span class="nap-label">NAP</span>
+                <div class="product-details">
+                    <div class="product-header">
+                        <img src="assets/196_logo.png" alt="-196" class="card-logo">
+                        <div class="product-name">-196 Lemon</div>
+                    </div>
+                    <div class="product-size">355ml • Japanese Vodka Seltzer</div>
+                    <div class="product-blurb">Japan's best-selling canned RTD since 2005. Made with Suntory's proprietary Freeze Crush Infusion—whole fruit flash-frozen at -196°C for bold, authentic flavor.</div>
+                    <div class="product-price">
+                        <span class="nap">$1.25</span>
+                        <span class="nap-label">NAP</span>
+                    </div>
                 </div>
             </div>
         </div>
