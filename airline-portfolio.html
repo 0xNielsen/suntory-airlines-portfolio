@@ -565,12 +565,15 @@
             margin-bottom: 2rem;
         }
 
-        /* Brand logo in slide header */
+        /* Brand logo positioned in top-right corner */
         .brand-logo {
-            height: 40px;
+            position: absolute;
+            top: var(--slide-padding);
+            right: var(--slide-padding);
+            height: 60px;
             width: auto;
+            max-width: 180px;
             object-fit: contain;
-            margin-bottom: 1.5rem;
         }
 
         /* ===========================================
@@ -613,8 +616,10 @@
             }
 
             .brand-logo {
-                height: 30px;
-                margin-bottom: 1rem;
+                height: 40px;
+                max-width: 120px;
+                top: 1rem;
+                right: 1rem;
             }
 
             .category-slide h2 {
@@ -759,7 +764,7 @@
 
     <!-- SLIDE 2: Bourbon Collection -->
     <section class="slide category-slide">
-        <img src="assets/JimBeam_Logo.png" alt="Jim Beam" class="brand-logo reveal">
+        <img src="assets/JimBeam_Logo.png" alt="Jim Beam" class="brand-logo">
         <div class="section-label reveal">Miniatures • 50ml</div>
         <h2 class="reveal">Bourbon <span>Collection</span></h2>
         
@@ -841,7 +846,7 @@
 
     <!-- SLIDE 4: On The Rocks Premium RTD Cocktails -->
     <section class="slide category-slide">
-        <img src="assets/OTR.Logo.png" alt="On The Rocks" class="brand-logo reveal">
+        <img src="assets/OTR.Logo.png" alt="On The Rocks" class="brand-logo">
         <div class="section-label reveal">On The Rocks • 100ml Bottles</div>
         <h2 class="reveal">On The Rocks <span>Premium RTD Cocktails</span></h2>
 
@@ -889,7 +894,7 @@
 
     <!-- SLIDE 5: On The Rocks Cans NEW -->
     <section class="slide otr-slide">
-        <img src="assets/OTR.Logo.png" alt="On The Rocks" class="brand-logo reveal">
+        <img src="assets/OTR.Logo.png" alt="On The Rocks" class="brand-logo">
         <div class="section-label reveal" style="color: var(--accent);">New for 2026 • 355ml Cans</div>
         <h2 class="reveal" style="font-size: clamp(2rem, 4vw, 3rem); font-weight: 400; margin-bottom: 3rem;">On The Rocks <span style="color: var(--accent-warm);">Canned Cocktails</span></h2>
         
@@ -928,7 +933,7 @@
 
     <!-- SLIDE 6: -196 Japanese RTD -->
     <section class="slide category-slide">
-        <img src="assets/196_logo.png" alt="-196" class="brand-logo reveal">
+        <img src="assets/196_logo.png" alt="-196" class="brand-logo">
         <div class="section-label reveal">Japanese Innovation • 355ml Can</div>
         <h2 class="reveal">-196 <span>Japanese Vodka Seltzer</span></h2>
 
