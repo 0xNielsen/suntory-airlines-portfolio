@@ -162,13 +162,11 @@
             position: relative;
         }
 
-        .title-slide .logo {
-            position: absolute;
-            top: var(--slide-padding);
-            right: var(--slide-padding);
-            height: 60px;
+        .title-slide .title-logo {
+            height: 80px;
+            margin-bottom: 2rem;
             opacity: 0;
-            animation: fadeSlide 0.8s ease 0.3s forwards;
+            animation: fadeSlide 0.8s ease 0.2s forwards;
         }
 
         .title-slide .content {
@@ -668,8 +666,9 @@
                 bottom: 15%;
             }
 
-            .title-slide .logo {
-                height: 45px;
+            .title-slide .title-logo {
+                height: 60px;
+                margin-bottom: 1.5rem;
             }
 
             .title-slide .content {
@@ -1047,14 +1046,14 @@
 
     <!-- SLIDE 1: Title -->
     <section class="slide title-slide">
-        <img src="assets/Suntory_Global_Spirits-Logo.png" alt="Suntory Global Spirits" class="logo reveal">
-        
         <div class="content">
             <div class="logo-mark reveal">
                 <div class="line"></div>
                 <span>Transit Channel</span>
             </div>
-            
+
+            <img src="assets/Suntory_Global_Spirits-Logo.png" alt="Suntory Global Spirits" class="title-logo reveal">
+
             <h1 class="main-title reveal">Airline<br><strong>Portfolio</strong></h1>
             <p class="subtitle reveal">Iconic American spirits and premium ready-to-drink cocktails, backed by generations of craftsmanship and heritage.</p>
         </div>
