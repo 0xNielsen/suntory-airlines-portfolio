@@ -565,15 +565,23 @@
             margin-bottom: 2rem;
         }
 
-        /* Brand logo positioned in top-right corner */
-        .brand-logo {
-            position: absolute;
-            top: var(--slide-padding);
-            right: var(--slide-padding);
-            height: 60px;
+        /* Brand logo inside product cards */
+        .product-card .card-logo {
+            height: 28px;
             width: auto;
-            max-width: 180px;
+            max-width: 100px;
             object-fit: contain;
+            margin-bottom: 1rem;
+            opacity: 0.85;
+        }
+
+        .otr-card .card-logo {
+            height: 24px;
+            width: auto;
+            max-width: 90px;
+            object-fit: contain;
+            margin-bottom: 0.75rem;
+            opacity: 0.85;
         }
 
         /* ===========================================
@@ -615,11 +623,14 @@
                 font-size: 1rem;
             }
 
-            .brand-logo {
-                height: 40px;
-                max-width: 120px;
-                top: 1rem;
-                right: 1rem;
+            .product-card .card-logo {
+                height: 22px;
+                max-width: 80px;
+            }
+
+            .otr-card .card-logo {
+                height: 20px;
+                max-width: 70px;
             }
 
             .category-slide h2 {
@@ -726,6 +737,43 @@
             }
         }
 
+        /* ===========================================
+           SLIDE DISCLAIMER
+           =========================================== */
+        .slide-disclaimer {
+            position: absolute;
+            bottom: var(--slide-padding);
+            left: var(--slide-padding);
+            right: var(--slide-padding);
+            font-size: 0.7rem;
+            color: var(--text-secondary);
+            opacity: 0.7;
+            text-align: center;
+        }
+
+        .pricing-slide .slide-disclaimer {
+            color: rgba(255, 255, 255, 0.5);
+            position: relative;
+            margin-top: 2rem;
+            bottom: auto;
+            left: auto;
+            right: auto;
+        }
+
+        .pricing-slide .pricing-disclaimer {
+            font-size: 0.85rem;
+            color: var(--accent-highlight);
+            margin-top: 1.5rem;
+            font-style: italic;
+        }
+
+        @media (max-width: 768px) {
+            .slide-disclaimer {
+                font-size: 0.6rem;
+                padding: 0 0.5rem;
+            }
+        }
+
         /* Animation helper */
         @keyframes fadeSlide {
             to { opacity: 1; transform: translateY(0); }
@@ -764,12 +812,12 @@
 
     <!-- SLIDE 2: Bourbon Collection -->
     <section class="slide category-slide">
-        <img src="assets/JimBeam_Logo.png" alt="Jim Beam" class="brand-logo">
         <div class="section-label reveal">Miniatures • 50ml</div>
         <h2 class="reveal">Bourbon <span>Collection</span></h2>
-        
+
         <div class="product-grid">
             <div class="product-card reveal">
+                <img src="assets/JimBeam_Logo.png" alt="Jim Beam" class="card-logo">
                 <div class="product-image">
                     <img src="assets/JimBeamWhite50ml.png" alt="Jim Beam White">
                 </div>
@@ -783,6 +831,7 @@
             </div>
 
             <div class="product-card reveal">
+                <img src="assets/JimBeam_Logo.png" alt="Jim Beam" class="card-logo">
                 <div class="product-image">
                     <img src="assets/JimBeamBlack590ml.png" alt="Jim Beam Black">
                 </div>
@@ -808,6 +857,7 @@
                 </div>
             </div>
         </div>
+        <p class="slide-disclaimer">Pricing varies by market. Contact your local distributor for accurate regional pricing.</p>
     </section>
 
     <!-- SLIDE 3: Tequila -->
@@ -842,16 +892,17 @@
                 </div>
             </div>
         </div>
+        <p class="slide-disclaimer">Pricing varies by market. Contact your local distributor for accurate regional pricing.</p>
     </section>
 
     <!-- SLIDE 4: On The Rocks Premium RTD Cocktails -->
     <section class="slide category-slide">
-        <img src="assets/OTR.Logo.png" alt="On The Rocks" class="brand-logo">
         <div class="section-label reveal">On The Rocks • 100ml Bottles</div>
         <h2 class="reveal">On The Rocks <span>Premium RTD Cocktails</span></h2>
 
         <div class="product-grid">
             <div class="product-card reveal">
+                <img src="assets/OTR.Logo.png" alt="On The Rocks" class="card-logo">
                 <div class="product-image">
                     <img src="assets/OTR.OF.100.png" alt="On The Rocks Old Fashioned">
                 </div>
@@ -865,6 +916,7 @@
             </div>
 
             <div class="product-card reveal">
+                <img src="assets/OTR.Logo.png" alt="On The Rocks" class="card-logo">
                 <div class="product-image">
                     <img src="assets/OTR.Marg.100.png" alt="On The Rocks Margarita">
                 </div>
@@ -878,6 +930,7 @@
             </div>
 
             <div class="product-card reveal">
+                <img src="assets/OTR.Logo.png" alt="On The Rocks" class="card-logo">
                 <div class="product-image">
                     <img src="assets/OTR.Cosmo.100ml.png" alt="On The Rocks Cosmopolitan">
                 </div>
@@ -890,16 +943,17 @@
                 </div>
             </div>
         </div>
+        <p class="slide-disclaimer">Pricing varies by market. Contact your local distributor for accurate regional pricing.</p>
     </section>
 
     <!-- SLIDE 5: On The Rocks Cans NEW -->
     <section class="slide otr-slide">
-        <img src="assets/OTR.Logo.png" alt="On The Rocks" class="brand-logo">
         <div class="section-label reveal" style="color: var(--accent);">New for 2026 • 355ml Cans</div>
         <h2 class="reveal" style="font-size: clamp(2rem, 4vw, 3rem); font-weight: 400; margin-bottom: 3rem;">On The Rocks <span style="color: var(--accent-warm);">Canned Cocktails</span></h2>
         
         <div class="otr-grid reveal">
             <div class="otr-card">
+                <img src="assets/OTR.Logo.png" alt="On The Rocks" class="card-logo">
                 <div class="can-image">
                     <img src="assets/OTR.MangoMintMojito.png" alt="Mango Mint Mojito">
                 </div>
@@ -910,6 +964,7 @@
             </div>
 
             <div class="otr-card">
+                <img src="assets/OTR.Logo.png" alt="On The Rocks" class="card-logo">
                 <div class="can-image">
                     <img src="assets/OTR.CucLemMule.355ml.png" alt="Cucumber Lemongrass Mule">
                 </div>
@@ -920,6 +975,7 @@
             </div>
 
             <div class="otr-card">
+                <img src="assets/OTR.Logo.png" alt="On The Rocks" class="card-logo">
                 <div class="can-image">
                     <img src="assets/OTR.SparklingMargarita.355ml.png" alt="Sparkling Lime Margarita">
                 </div>
@@ -929,16 +985,17 @@
                 <div class="price-badge">$1.70 NAP</div>
             </div>
         </div>
+        <p class="slide-disclaimer">Pricing varies by market. Contact your local distributor for accurate regional pricing.</p>
     </section>
 
     <!-- SLIDE 6: -196 Japanese RTD -->
     <section class="slide category-slide">
-        <img src="assets/196_logo.png" alt="-196" class="brand-logo">
         <div class="section-label reveal">Japanese Innovation • 355ml Can</div>
         <h2 class="reveal">-196 <span>Japanese Vodka Seltzer</span></h2>
 
         <div class="product-grid" style="max-width: 400px;">
             <div class="product-card reveal">
+                <img src="assets/196_logo.png" alt="-196" class="card-logo">
                 <div class="product-image" style="height: 220px;">
                     <img src="assets/196lemon.png" alt="-196 Lemon">
                 </div>
@@ -951,6 +1008,7 @@
                 </div>
             </div>
         </div>
+        <p class="slide-disclaimer">Pricing varies by market. Contact your local distributor for accurate regional pricing.</p>
     </section>
 
     <!-- SLIDE 7: Full Pricing Summary -->
@@ -1030,6 +1088,8 @@
                 </tr>
             </tbody>
         </table>
+        <p class="pricing-disclaimer reveal">* NAP = Net Average Price. Actual pricing varies by market and distributor.</p>
+        <p class="slide-disclaimer">Contact your market's distributor for accurate regional pricing and availability.</p>
     </section>
 
     <!-- SLIDE 8: Contact -->
