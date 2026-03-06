@@ -262,6 +262,32 @@
             max-width: 500px;
         }
 
+        .section-nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-top: 2rem;
+        }
+
+        .section-nav a {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: rgba(0, 51, 57, 0.08);
+            border: 1px solid var(--accent-highlight);
+            border-radius: 20px;
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .section-nav a:hover {
+            background: var(--accent);
+            color: #ffffff;
+            transform: translateY(-2px);
+        }
+
         .accent-circle {
             position: absolute;
             bottom: 12%;
@@ -735,6 +761,16 @@
                 line-height: 1.6;
             }
 
+            .section-nav {
+                gap: 0.5rem;
+                margin-top: 1.5rem;
+            }
+
+            .section-nav a {
+                padding: 0.4rem 0.75rem;
+                font-size: 0.75rem;
+            }
+
             .logo-mark span {
                 font-size: 0.65rem;
             }
@@ -1106,6 +1142,15 @@
 
             <h1 class="main-title reveal">Airline<br><strong>Portfolio</strong></h1>
             <p class="subtitle reveal">Iconic American spirits and premium ready-to-drink cocktails, backed by generations of craftsmanship and heritage.</p>
+
+            <nav class="section-nav reveal">
+                <a href="#bourbon">Bourbon</a>
+                <a href="#tequila">Tequila</a>
+                <a href="#otr-bottles">OTR Bottles</a>
+                <a href="#otr-cans">OTR Cans</a>
+                <a href="#-196">-196</a>
+                <a href="#pricing">Pricing</a>
+            </nav>
         </div>
 
         <div class="vertical-text">Suntory Global Spirits</div>
@@ -1120,7 +1165,7 @@
     </section>
 
     <!-- SLIDE 2: Bourbon Collection -->
-    <section class="slide category-slide">
+    <section id="bourbon" class="slide category-slide">
         <div class="section-label reveal">Miniatures • 50ml PET</div>
         <h2 class="reveal">Bourbon <span>Collection</span></h2>
 
@@ -1183,7 +1228,7 @@
     </section>
 
     <!-- SLIDE 3: Tequila -->
-    <section class="slide category-slide">
+    <section id="tequila" class="slide category-slide">
         <div class="section-label reveal">Miniatures • 50ml PET</div>
         <h2 class="reveal">Tequila <span>Collection</span></h2>
         
@@ -1228,7 +1273,7 @@
     </section>
 
     <!-- SLIDE 4: On The Rocks Premium RTD Cocktails -->
-    <section class="slide category-slide">
+    <section id="otr-bottles" class="slide category-slide">
         <div class="section-label reveal">On The Rocks • 100ml PET</div>
         <h2 class="reveal">On The Rocks<br class="mobile-break"> <span>Premium RTD Cocktails</span></h2>
 
@@ -1291,7 +1336,7 @@
     </section>
 
     <!-- SLIDE 5: On The Rocks Cans NEW -->
-    <section class="slide category-slide">
+    <section id="otr-cans" class="slide category-slide">
         <div class="section-label reveal">New for 2026 • 355ml Cans</div>
         <h2 class="reveal">On The Rocks<br class="mobile-break"> <span>Canned Cocktails</span></h2>
 
@@ -1354,7 +1399,7 @@
     </section>
 
     <!-- SLIDE 6: -196 Japanese RTD -->
-    <section class="slide category-slide">
+    <section id="-196" class="slide category-slide">
         <div class="section-label reveal">Japanese Innovation • 355ml Can</div>
         <h2 class="reveal">-196<br class="mobile-break"> <span>Japanese Vodka Seltzer</span></h2>
 
@@ -1381,7 +1426,7 @@
     </section>
 
     <!-- SLIDE 7: Full Pricing Summary -->
-    <section class="slide pricing-slide">
+    <section id="pricing" class="slide pricing-slide">
         <div class="section-label reveal">Complete Portfolio</div>
         <h2 class="reveal">NAP Pricing Summary</h2>
         
