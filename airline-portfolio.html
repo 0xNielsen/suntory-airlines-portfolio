@@ -592,6 +592,16 @@
                 --slide-padding: 1.5rem;
             }
 
+            /* Improve touch scrolling */
+            html {
+                scroll-snap-type: y proximity;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            .slide {
+                padding-bottom: 4rem; /* Room for disclaimer */
+            }
+
             .nav-dots {
                 display: none;
             }
@@ -601,14 +611,14 @@
             }
 
             .accent-circle {
-                width: 100px;
-                height: 100px;
+                width: 80px;
+                height: 80px;
                 right: 5%;
-                bottom: 10%;
+                bottom: 15%;
             }
 
             .title-slide .logo {
-                height: 30px;
+                height: 28px;
             }
 
             .title-slide .content {
@@ -616,96 +626,150 @@
             }
 
             .main-title {
-                font-size: 2.2rem;
+                font-size: 2rem;
+                line-height: 1.2;
             }
 
             .subtitle {
-                font-size: 1rem;
+                font-size: 0.95rem;
+                line-height: 1.6;
+            }
+
+            .logo-mark span {
+                font-size: 0.65rem;
+            }
+
+            .slide-footer {
+                font-size: 0.7rem;
+                gap: 1.5rem;
+            }
+
+            .section-label {
+                font-size: 0.6rem !important;
             }
 
             .product-card .card-logo {
-                height: 35px;
-                max-width: 110px;
-            }
-
-            .otr-card .card-logo {
-                height: 30px;
+                height: 32px;
                 max-width: 100px;
             }
 
+            .otr-card .card-logo {
+                height: 28px;
+                max-width: 90px;
+            }
+
             .category-slide h2 {
-                font-size: 1.6rem;
-                margin-bottom: 1.5rem;
+                font-size: 1.5rem;
+                margin-bottom: 1.25rem;
             }
 
             .product-grid {
                 grid-template-columns: 1fr;
-                gap: 1.5rem;
+                gap: 1.25rem;
             }
 
             .product-card {
-                padding: 1.5rem;
+                padding: 1.25rem;
             }
 
             .product-card .product-image {
-                height: 140px;
+                height: 130px;
+            }
+
+            .product-card .product-name {
+                font-size: 1rem;
+            }
+
+            .product-card .product-size {
+                font-size: 0.75rem;
             }
 
             .product-card .product-blurb {
-                font-size: 0.8rem;
+                font-size: 0.75rem;
+                line-height: 1.4;
+            }
+
+            .product-card .nap {
+                font-size: 1.25rem;
             }
 
             .otr-grid {
                 grid-template-columns: 1fr;
-                gap: 1.5rem;
+                gap: 1.25rem;
             }
 
             .otr-card {
-                padding: 1.5rem;
+                padding: 1.25rem;
             }
 
             .otr-card .can-image {
-                height: 180px;
+                height: 160px;
+            }
+
+            .otr-card .cocktail-name {
+                font-size: 1rem;
+            }
+
+            .otr-card .can-blurb {
+                font-size: 0.75rem;
+                min-height: auto;
+            }
+
+            .otr-card .price-badge {
+                font-size: 0.8rem;
+                padding: 0.4rem 1rem;
             }
 
             .contact-slide h2 {
-                font-size: 1.8rem;
+                font-size: 1.6rem;
             }
 
             .contact-slide .contact-name {
-                font-size: 1.2rem;
+                font-size: 1.1rem;
             }
 
             .contact-slide .contact-title {
-                font-size: 0.9rem;
+                font-size: 0.85rem;
             }
 
             .contact-info {
                 flex-direction: column;
-                gap: 1.5rem;
+                gap: 1.25rem;
+            }
+
+            .contact-info .label {
+                font-size: 0.6rem;
+            }
+
+            .contact-info .value {
+                font-size: 0.9rem;
             }
 
             .contact-slide .logo-footer {
-                height: 30px;
+                height: 28px;
             }
 
             .pricing-slide h2 {
-                font-size: 1.6rem;
+                font-size: 1.5rem;
             }
 
             .pricing-table {
-                font-size: 0.85rem;
+                font-size: 0.8rem;
             }
 
             .pricing-table th,
             .pricing-table td {
-                padding: 0.6rem 0.8rem;
-                font-size: 0.8rem;
+                padding: 0.5rem 0.6rem;
+                font-size: 0.75rem;
             }
 
             .pricing-table th:nth-child(3),
             .pricing-table td:nth-child(3) {
                 display: none; /* Hide category column on mobile */
+            }
+
+            .pricing-disclaimer {
+                font-size: 0.75rem !important;
             }
         }
 
@@ -715,25 +779,78 @@
             }
 
             .main-title {
-                font-size: 1.8rem;
+                font-size: 1.6rem;
+            }
+
+            .subtitle {
+                font-size: 0.85rem;
             }
 
             .category-slide h2 {
-                font-size: 1.4rem;
+                font-size: 1.3rem;
+            }
+
+            .product-card {
+                padding: 1rem;
+            }
+
+            .product-card .card-logo {
+                height: 28px;
+                max-width: 85px;
             }
 
             .product-card .product-image {
-                height: 120px;
+                height: 110px;
+            }
+
+            .product-card .product-blurb {
+                font-size: 0.7rem;
+            }
+
+            .otr-card {
+                padding: 1rem;
+            }
+
+            .otr-card .card-logo {
+                height: 24px;
+                max-width: 80px;
             }
 
             .otr-card .can-image {
-                height: 150px;
+                height: 140px;
             }
 
             .pricing-table th,
             .pricing-table td {
-                padding: 0.5rem;
-                font-size: 0.75rem;
+                padding: 0.4rem 0.5rem;
+                font-size: 0.7rem;
+            }
+
+            .contact-slide h2 {
+                font-size: 1.4rem;
+            }
+
+            .contact-slide .contact-name {
+                font-size: 1rem;
+            }
+        }
+
+        /* Extra small screens */
+        @media (max-width: 360px) {
+            .main-title {
+                font-size: 1.4rem;
+            }
+
+            .category-slide h2 {
+                font-size: 1.2rem;
+            }
+
+            .product-card .product-image {
+                height: 100px;
+            }
+
+            .otr-card .can-image {
+                height: 120px;
             }
         }
 
@@ -769,9 +886,47 @@
 
         @media (max-width: 768px) {
             .slide-disclaimer {
-                font-size: 0.6rem;
-                padding: 0 0.5rem;
+                font-size: 0.55rem;
+                padding: 0 0.25rem;
+                bottom: 0.75rem;
             }
+
+            /* Mobile swipe hint on title slide */
+            .swipe-hint {
+                display: block;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .slide-disclaimer {
+                font-size: 0.5rem;
+            }
+        }
+
+        /* Swipe hint for mobile */
+        .swipe-hint {
+            display: none;
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.7rem;
+            opacity: 0.6;
+            animation: bounceHint 2s ease-in-out infinite;
+        }
+
+        .swipe-hint::before {
+            content: '↓';
+            display: block;
+            font-size: 1.2rem;
+            margin-bottom: 0.25rem;
+        }
+
+        @keyframes bounceHint {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(5px); }
         }
 
         /* Animation helper */
@@ -808,6 +963,8 @@
             <span>March 2026</span>
             <span>NAP Pricing</span>
         </div>
+
+        <div class="swipe-hint">Swipe to explore</div>
     </section>
 
     <!-- SLIDE 2: Bourbon Collection -->
